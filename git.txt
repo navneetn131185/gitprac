@@ -1,0 +1,193 @@
+
+GIT HANDS-ON PRACTICE LAB
+
+LOCAL PROJECT TO GITHUB
+-----------------------
+mkdir local_to_github
+# Creates a new project directory
+
+cd local_to_github
+# Moves into the project directory
+
+git init
+# Creates a new Git repository (.git folder)
+
+ls -la
+# Shows all files including hidden .git directory
+
+echo "Hello Git" > app.txt
+# Creates a file named app.txt
+
+cat app.txt
+# Displays file contents
+
+git status
+# Shows repository status and untracked files
+
+git add app.txt
+# Adds the file to Git's staging area
+
+git status
+# Verify file is staged
+
+git commit -m "Initial commit"
+# Creates the first snapshot (commit)
+
+git log --oneline
+# Shows commit history in short format
+
+git branch
+# Shows current branch
+
+git branch -M main
+# Renames current branch to main
+
+git remote add origin https://github.com/USERNAME/REPO.git
+# Connects local repository to GitHub
+
+git remote -v
+# Verifies remote repository URL
+
+git push -u origin main
+# Uploads code to GitHub and sets upstream branch
+
+
+COMMIT HISTORY PRACTICE
+-----------------------
+mkdir history_demo
+cd history_demo
+git init
+
+echo "Version 1" > file.txt
+git add .
+git commit -m "Commit A"
+
+echo "Version 2" >> file.txt
+git add .
+git commit -m "Commit B"
+
+echo "Version 3" >> file.txt
+git add .
+git commit -m "Commit C"
+
+git log --oneline
+# View commit history
+
+git show <commit_hash>
+# View details of a commit
+
+git revert <commit_hash>
+# Undo a commit by creating a new commit
+
+
+BRANCHING PRACTICE
+------------------
+git checkout -b feature-login
+# Create and switch to new branch
+
+git branch
+# View all branches
+
+echo "Login feature" >> app.txt
+git add .
+git commit -m "Added login feature"
+
+git checkout main
+# Return to main branch
+
+git merge feature-login
+# Merge branch into main
+
+git log --oneline --graph --all
+# Visualize branch history
+
+
+MERGE CONFLICT PRACTICE
+-----------------------
+git checkout -b branchA
+echo "Code from A" > app.txt
+git add .
+git commit -m "Branch A change"
+
+git checkout main
+git checkout -b branchB
+
+echo "Code from B" > app.txt
+git add .
+git commit -m "Branch B change"
+
+git checkout main
+git merge branchA
+git merge branchB
+
+git status
+# Shows conflicting files
+
+cat app.txt
+# View conflict markers
+
+git add app.txt
+git commit -m "Resolved merge conflict"
+
+
+UNDO CHANGES PRACTICE
+---------------------
+git restore file.txt
+# Discard unstaged changes
+
+git restore --staged file.txt
+# Unstage a file
+
+git commit --amend
+# Modify last commit
+
+git reset --soft HEAD~1
+# Remove commit but keep changes staged
+
+git reset --mixed HEAD~1
+# Remove commit and unstage changes
+
+git reset --hard HEAD~1
+# Remove commit and changes permanently
+
+
+STASH PRACTICE
+--------------
+git stash
+git stash list
+git stash apply
+git stash pop
+
+
+REBASE PRACTICE
+---------------
+git checkout -b feature-auth
+git checkout main
+git checkout feature-auth
+git rebase main
+
+git log --oneline --graph
+
+
+CHERRY-PICK PRACTICE
+--------------------
+git log --oneline
+git checkout another-branch
+git cherry-pick <commit_hash>
+
+
+DAILY GIT COMMANDS
+------------------
+git status
+git add .
+git commit -m "msg"
+git push
+git pull
+git fetch
+git log --oneline --graph --all
+git branch
+git checkout branch_name
+git merge branch_name
+git rebase branch_name
+git stash
+git reflog
